@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html class=" w-mod-ix">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+    .wf-force-outline-none[tabindex="-1"]:focus {
+      outline: none;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100;200;300;400&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <link rel="stylesheet" href="./files/box_swipe/box_swipe.css">
+  <!-- <link rel="stylesheet" href="./files/swiper/css/swiper-bundle.min.css"> -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="./files/js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js"
+    integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+  <script src="./files/swiper/js/slider.js"></script>
+
+  <script src="./files/box_swipe/box_swipe.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XB3PR2Y1TQ');
+  </script>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title> DiFaReli++: Diffusion Face Relighting with Consistent Cast Shadows</title>
+  <link rel="stylesheet" href="./files/bootstrap.min.css">
+  <link href="./files/css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./files/Highlight-Clean.css">
+  <link rel="stylesheet" href="./files/styles.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./files/content/logo/tab.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./files/content/logo/tab.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./files/content/logo/tab.png">
+
+  <script src="./files/video_comparison.js.download"></script>
+  <script type="module" src="./files/model-viewer.min.js.download"></script>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1089.0" data-gr-ext-installed="">
+  <div class="highlight-clean" style="padding-bottom: 10px;">
+    <div class="container" style="max-width: 1000px;">
+      <!-- <h1 class="text-center textShineBlack"> <b>DiFaReli <img src="https://em-content.zobj.net/source/microsoft-teams/337/pinched-fingers_1f90c.png" style="vertical-align:top" width="40" alt="logo" /> : Diffusion Face Relighting</b></h1> -->
+
+      <h1 class="text-center" style="line-height: 1.2; font-weight: bold"> <b>
+        DiFaReli++: Diffusion Face Relighting<br>with Consistent Cast Shadows</b></h1>
+      <!-- <h1 class="text-center textShineBlack" style="line-height: 1.2; font-weight: bold"> <b>
+        DiFaReli++ -->
+        <!-- <img
+            src="https://em-content.zobj.net/source/microsoft-teams/337/pinched-fingers_1f90c.png"
+            style="vertical-align:top; " width="25" alt="logo" 
+        />
+        <img
+            src="https://em-content.zobj.net/source/microsoft-teams/337/pinched-fingers_1f90c.png"
+            style="vertical-align:top;transform: scaleX(-1);" width="25" alt="logo" 
+        /> -->
+        <!-- : Diffusion Face Relighting<br>with Consistent Cast Shadows</b></h1> -->
+    </div>
+    <!-- <div class="container" style="max-width: 900px;">
+      <div class="row authors">
+        <div class="col-sm">
+          <h5 class="text-center" style="font-weight:500;"><a class="text-center"> Puntawat Ponglertnapakorn </a></h5>
+        </div>
+        <div class="col-sm">
+          <h5 class="text-center" style="font-weight:500;">
+            <a class="text-center">Nontawat Tritrong</a>
+          </h5>
+        </div>
+        <div class="col-sm">
+          <h5 class="text-center" style="font-weight:500;">
+            <a class="text-center author" href="https://www.supasorn.com"> Supasorn Suwajanakorn </a>
+          </h5>
+        </div>
+      </div>
+      <div class="row affiliate">
+        <div class="col-sm">
+          <h4 class="text-center vistec"> VISTEC - Vidyasirimedhi Institute of Science and Technology <br>Rayong,
+            Thailand</h4>
+        </div>
+      </div>
+    </div> -->
+
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <!-- <img class="teaser" src="./files/content/image/teaser-1.png" style="max-width: 1300px"> -->
+        <img class="teaser" src="./files/new_content/image/teaser.jpg" style="max-width: 1200px; width: 95%">
+      </div>
+    </div>
+
+  <hr class="divider">
+  <div class="container" style="max-width: 900px;" id="sec_shadow">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Experiment Section V.D – Shadow Flag Condition</h2>
+        <p>
+          <!-- As mentioned in "Experiment Section V.D – Shadow Flag Condition" of our main paper, we demonstrate the same capability as DiFaReli in strengthening and attenuating cast shadows on the face. -->
+          As mentioned in main paper, we demonstrate the same capability as DiFaReli in strengthening and attenuating cast shadows on the face.
+        </p>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="show_when_small" style="text-align: center; color: red">
+        Open this website on a desktop to see animated results!
+      </div>
+      <div class="row justify-content-center hide_when_small">
+        <div class="col-md-auto">
+          <center>
+            <p style="font-size: small; margin-bottom: 0px;">
+              Move the slider to animate the results.
+            </p>
+          </center>
+          <div class="slider">
+            <div class="slider_circle">
+              <div class="slider_right"> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-auto" style="padding-left: 0px;">
+          <button class="slider_toggle"><i class="fa fa-pause"></i></button>
+        </div>
+      </div>
+
+      <div class="slide-container swiper">
+        <div style="max-width: 640px; margin: auto">
+          <div class="flex-container justify-content-center">
+            <div class="label">
+              Softer
+            </div>
+            <div class="label">
+              <-- Shadows -->
+            </div>
+            <div class="label">
+              Stronger
+            </div>
+            <div class="label hide_when_small">
+              Animated
+            </div>
+          </div>
+        </div>
+
+        <div id="s2" class="slide-content">
+          <div class="card-wrapper swiper-wrapper inner-content">
+          </div>
+
+          <div class="swiper-button-next swiper-navBtn"></div>
+          <div class="swiper-button-prev swiper-navBtn"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <hr class="divider">
+  <div class="container" style="max-width: 900px;">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <h2> Relighting under moving light conditiongs </h2> -->
+        <h2> Experiment Section V.D - Relighting with Consistent Cast Shadows </h2>
+        <p>
+          We present video results corresponding to some of the results in Figures 9, 22, 23, 24, and 25. 
+          Our method, DiFaReli++<sub>ss</sub>, effectively handles input with strong shadows and highlights, achieving the most consistent cast shadows and realistic relighting among four state-of-the-art methods across various subjects with different head poses and lighting conditions.
+          
+                <!-- Our method, DiFaReli++, achieves the most consistent cast shadows and realistic relighting compared to four state-of-the-art methods under varying head poses and input lighting conditions, including strong shadows and highlights. -->
+                <!-- We present example results from "Experiment Section V.D - Relighting with consistent cast shadows" of our main paper, taken from Figures 9, 22, 23, 24, and 25. 
+                Our method, DiFaReli++, achieves the most consistent cast shadows and realistic relighting comparing to 4 SOTAs, even under varying head poses and shadow conditions. -->
+        </p>
+        <p>
+                The shadow map and shading reference are provided in the rightmost column (Cond.).
+        </p>
+      </div>
+    </div>
+    <!-- <div class="container">
+                <div class="row">
+                    <div class="col-sm text-center">
+                        <video class="mx-auto d-block" width="65%" autoplay muted loop>
+                            <source src="./files/content/rotate_light/out_grid1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div> -->
+    <div class="container" style="width:130%;">
+      <div class="row">
+        <div class="slide-container swiper" style="margin-left: -125px;">
+            <div style="max-width: auto; margin: auto">
+              <div class="flex-container_cs">
+                <div class="grid-input">
+                  <div class="label" style="padding-left: 100px;padding-right:65px">Input</div>
+                </div>
+                <!-- Second grid for the other labels -->
+                <div class="grid-labels">
+                  <div class="label">Hou et al. (2021)</div>
+                  <div class="label">Hou et al. (2022)</div>
+                  <div class="label">IC-Light (2024)</div>
+                  <div class="label">DiFaReli (2023)</div>
+                  <div class="label-ours">DiFaReli++<sub>ss</sub></div>
+                </div>
+                <div class="grid-input">
+                  <div class="label" style="padding-left: 15px;">Cond.</div>
+                </div>
+              </div>
+            </div>
+          <!-- <div class="row g-0 justify-content-center" style="margin-left: -10px; margin-bottom:2px"> -->
+          <div class="slide-content s4">
+            <div class="card-wrapper swiper-wrapper">
+              <div class="card swiper-slide">
+                <div class="row-gg g-0 justify-content-center d-flex align-items-center">
+                  <img src="./files/new_content/compare_cs/grid0_inp.jpg" height="640px" style="margin-right: 2px;">
+                  <video class="mx-auto d-block vidrot" height="640px" autoplay muted loop>
+                    <source src="./files/new_content/compare_cs/grid0.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="row-gg g-0 justify-content-center d-flex align-items-center">
+                  <img src="./files/new_content/compare_cs/grid1_inp.jpg" height="640px" style="margin-right: 2px;">
+                  <video class="mx-auto d-block vidrot" height="640px" autoplay muted loop>
+                    <source src="./files/new_content/compare_cs/grid1.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="row-gg g-0 justify-content-center d-flex align-items-center">
+                  <img src="./files/new_content/compare_cs/grid2_inp.jpg" height="640px" style="margin-right: 2px;">
+                  <video class="mx-auto d-block vidrot" height="640px" autoplay muted loop>
+                    <source src="./files/new_content/compare_cs/grid2.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="row-gg g-0 justify-content-center d-flex align-items-center">
+                  <img src="./files/new_content/compare_cs/grid3_inp.jpg" height="640px" style="margin-right: 2px;">
+                  <video class="mx-auto d-block vidrot" height="640px" autoplay muted loop>
+                    <source src="./files/new_content/compare_cs/grid3.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <div class="container" style="max-width: 900px;">
+    <div class="row">
+      <div class="col-md-12">
+        <h2> Additional Relighting Results </h2>
+        <p>
+        We present additional relighting results featuring diverse lighting paths. These input images contain existing strong highlights and cast shadows, a wide range of head poses, or facial makeup and accessories. 
+        On the left, we visualize the approximate location of the dominant light source, where the size of the red circle represents the area of the light source. Smaller areas produce sharper cast shadows, while larger areas create more diffuse appearances.
+        </p>
+      </div>
+    </div>
+    <div class="container" style="width:130%;">
+      <div class="row">
+        <div class="slide-container swiper" style="margin-left: -125px;">
+            <div style="max-width: auto; margin: auto">
+              <div class="flex-container_cs">
+                <div class="grid-input">
+                  <div class="label" style="padding-left: 100px;padding-right:65px">Target lighting</div>
+                </div>
+                <!-- Second grid for the other labels -->
+                <div class="grid-labels2">
+                  <div class="label">Input</div>
+                  <div class="label">Relit</div>
+                  <div class="label">Input</div>
+                  <div class="label">Relit</div>
+                </div>
+                <!-- <div class="grid-input">
+                  <div class="label" style="padding-left: 15px;">Cond.</div>
+                </div> -->
+              </div>
+            </div>
+          <div class="slide-content s4">
+            <div class="card-wrapper swiper-wrapper">
+              <div class="card swiper-slide">
+                <div class="row-gg g-0 justify-content-center">
+                  <!-- <center>
+                    <p class="lessbottom"> We rotate the light while gradually decreasing the cast shadow intensity.
+                    </p>
+                  </center> -->
+                </div>
+                <div class="row-gg g-0 justify-content-center d-flex align-items-center">
+                  <video class="mx-auto d-block vidrot" height="600px" autoplay muted loop>
+                    <source src="./files/new_content/fancy/grid0.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="row-gg g-0 justify-content-center">
+                </div>
+                <div class="row-gg g-0 justify-content-center d-flex align-items-center">
+                  <video class="mx-auto d-block vidrot" height="600px" autoplay muted loop>
+                    <source src="./files/new_content/fancy/grid1.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="row-gg g-0 justify-content-center">
+                </div>
+                <div class="row-gg g-0 justify-content-center d-flex align-items-center">
+                  <video class="mx-auto d-block vidrot" height="600px" autoplay muted loop>
+                    <source src="./files/new_content/fancy/grid2.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="row-gg g-0 justify-content-center">
+                </div>
+                <div class="row-gg g-0 justify-content-center d-flex align-items-center">
+                  <video class="mx-auto d-block vidrot" height="600px" autoplay muted loop>
+                    <source src="./files/new_content/fancy/grid3.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <div class="container" style="max-width: 900px;">
+    <div class="row">
+      <div class="col-md-12">
+        <p style="margin-top: -10px; margin-bottom: 0"> <b>Acknowledgements:</b> This website was built upon templates borrowed from
+          <a href="https://dreamfusion3d.github.io/"> DreamFusion </a> and <a href="https://nvlabs.github.io/eg3d/">
+            EG3D</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <hr class="divider"> -->
+  <script src="./files/polyfill.js.download"></script>
+  <script src="./files/yall.js.download"></script>
+  <script>
+    yall(
+      {
+        observeChanges: true
+      }
+    );
+  </script>
+  <script src="./files/scripts.js.download"></script>
+  <script src="./files/jquery.min.js.download"></script>
+  <script src="./files/bootstrap.bundle.min.js.download"></script>
+  <script src="./files/webflow.fd002feec.js.download"></script>
+
+  <!-- Import the component -->
+  <!-- <div class="end" style="margin-top: 30px;">
+    <div style="text-align: center;">
+      <a href="https://vistec.ist/vision" target="_blank"><img src="./files/content/logo/vll_logo.png"
+          style="width: 130px; display: inline; margin: 0 100px;"></a>
+      <a href="https://vistec.ist/" target="_blank"><img src="./files/content/logo/vistec_logo.png"
+          class="vistec-offset" style="width: 130px; display: inline; margin: 0 100px; position:relative; "></a>
+    </div> -->
+  <!-- </div> -->
+
+</body>
+<!-- Swiper JS -->
+<!-- <script src="./files/swiper/js/swiper-bundle.min.js"></script> -->
+<script>
+  initComparisons();
+  linkVideos(0);
+</script>
+
+<!-- JavaScript -->
+<script src="./files/swiper/js/script.js"></script>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>
